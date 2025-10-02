@@ -1,0 +1,147 @@
+1. Problem Definition
+
+Number system conversion is a core concept in computer science and digital electronics. Manual conversions between bases (e.g., binary, octal, decimal, hexadecimal) are time-consuming and error-prone.
+The objective of this project is to automate number system conversions through a Python program and later extend it to a GUI and mobile applications.
+
+2. Objectives
+
+Automate conversion between different number systems (bases 2 to 36).
+
+Provide CLI-based interaction for testing and debugging.
+
+Extend functionality to a GUI using Kivy or Flutter.
+
+Package and deploy on Android and iOS platforms.
+
+Provide error handling for invalid inputs.
+
+3. Inputs and Outputs
+Inputs:
+
+Number (string input, e.g., "1010", "A3F").
+
+Source base (integer, 2 ≤ base ≤ 36).
+
+Target base (integer, 2 ≤ base ≤ 36).
+
+Outputs:
+
+Converted number as a string.
+
+Error messages for invalid bases or digits.
+
+4. Conversion Logic
+
+Step 1 – Convert Input Number → Decimal
+
+Parse the number digit by digit.
+
+Multiply and accumulate according to the source base.
+
+Step 2 – Convert Decimal → Target Base
+
+Divide repeatedly by the target base.
+
+Collect remainders to form the new number.
+
+Step 3 – Return Result
+
+Display converted number as a string.
+
+5. Process Workflow
+
+Requirement Gathering – Decide supported bases (2–36).
+
+Design – Define functions for conversion logic.
+
+Implementation – Write Python CLI script first.
+
+Testing –
+
+Unit tests with known conversions.
+
+Edge cases (0, invalid characters, unsupported bases).
+
+GUI Development – Wrap logic into:
+
+Kivy (Python, easy integration).
+
+Flutter/Dart (cross-platform native feel).
+
+Deployment –
+
+CLI: Run in terminal.
+
+Desktop GUI: Run locally.
+
+Mobile: Package using Buildozer (Android) / Xcode (iOS) for Kivy, or Flutter build tools.
+
+6. Tools & Technologies
+
+Programming Language: Python (CLI + Kivy), Dart (Flutter).
+
+Libraries:
+
+Kivy (GUI in Python).
+
+Flutter/Dart (Mobile GUI).
+
+Deployment Tools:
+
+Buildozer (Android packaging for Python/Kivy).
+
+Flutter build system (APK/IPA).
+
+Version Control: GitHub (for collaboration).
+
+7. Collaboration Plan
+
+Team members grouped (5 max).
+
+Roles:
+
+Developer 1: CLI implementation.
+
+Developer 2: GUI integration.
+
+Developer 3: Testing + Documentation.
+
+Developer 4: Mobile deployment (Android).
+
+Developer 5: Mobile deployment (iOS).
+
+Instructor/Collaborator added as a GitHub collaborator.
+
+8. Testing Strategy
+
+Manual Testing: Convert known numbers (e.g., 1010 (bin) → 10 (dec)).
+
+Automated Testing: Unit tests in Python (e.g., with pytest).
+
+Edge Cases:
+
+Input: "0", "Z".
+
+Invalid digits for base.
+
+Large numbers.
+
+9. Deployment Plan
+
+Phase 1: Run CLI locally.
+
+Phase 2: Deploy GUI (desktop).
+
+Phase 3: Build Android APK (Kivy or Flutter).
+
+Phase 4: Test on Android device.
+
+Phase 5: (Optional) Deploy to iOS via Xcode or Flutter.
+
+10. Expected Outcome
+
+A working automation tool that converts numbers between any base (2–36).
+
+Available as a CLI tool, desktop GUI, and mobile app.
+
+Documented with process and program details.
