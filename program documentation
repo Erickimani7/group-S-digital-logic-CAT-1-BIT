@@ -1,0 +1,173 @@
+📑 Program Documentation
+
+Project Title: Number System Conversion Automation
+Programming Languages: Python (CLI + Kivy), Dart (Flutter for mobile)
+
+1. Introduction
+
+This program automates the conversion of numbers between different bases (binary, octal, decimal, hexadecimal, and beyond up to base 36). It provides both a CLI interface and options for a GUI in Kivy (Python) or Flutter (Dart).
+
+The program takes three inputs:
+
+Number to convert.
+
+Source base (2–36).
+
+Target base (2–36).
+
+It outputs the number expressed in the target base.
+
+2. Program Structure
+2.1 Main Components
+
+Conversion Logic
+
+Function to convert from any base → decimal.
+
+Function to convert decimal → target base.
+
+CLI Interface
+
+Accepts user input via terminal.
+
+Prints the converted result.
+
+GUI Interface (optional)
+
+Implemented in Kivy (Python) or Flutter (Dart).
+
+Provides input fields and a convert button.
+
+2.2 Python CLI Version (Core Script)
+DIGITS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+def convert(num_str, from_base, to_base):
+    # Step 1: Convert from source base → decimal
+    num_str = num_str.strip().upper()
+    decimal_value = 0
+    for ch in num_str:
+        decimal_value = decimal_value * from_base + DIGITS.index(ch)
+
+    # Step 2: Convert from decimal → target base
+    if decimal_value == 0:
+        return "0"
+    result = ""
+    while decimal_value > 0:
+        result = DIGITS[decimal_value % to_base] + result
+        decimal_value //= to_base
+    return result
+
+
+if __name__ == "__main__":
+    number = input("Enter the number: ")
+    from_base = int(input("Enter source base (2–36): "))
+    to_base = int(input("Enter target base (2–36): "))
+
+    try:
+        print("Converted result:", convert(number, from_base, to_base))
+    except ValueError:
+        print("Error: invalid input for given base.")
+
+2.3 Kivy GUI Version (Python)
+
+UI Elements:
+
+TextInput → Enter number.
+
+TextInput → From base.
+
+TextInput → To base.
+
+Button → Trigger conversion.
+
+Label → Display result.
+
+Main Class: ConverterApp extends App.
+
+Logic: Uses the same convert() function.
+
+2.4 Flutter/Dart Version (Mobile)
+
+Widgets Used:
+
+TextField for number, from base, and to base.
+
+ElevatedButton for conversion trigger.
+
+Text widget to display result.
+
+Logic Functions:
+
+toDecimal() → Converts input to base 10.
+
+fromDecimal() → Converts decimal to target base.
+
+convert() → Combines both.
+
+3. Inputs and Outputs
+Inputs
+
+Number: String input (e.g., "1010", "A3F").
+
+Source Base: Integer (2–36).
+
+Target Base: Integer (2–36).
+
+Outputs
+
+Converted number in string format.
+
+Error messages for:
+
+Invalid digits.
+
+Invalid base values.
+
+4. Error Handling
+
+Invalid Base: Rejects bases outside the range [2, 36].
+
+Invalid Digit: Checks if digit is not allowed in the given base.
+
+Empty Input: Returns error message.
+
+5. Testing
+Example Test Cases:
+Input Number	From Base	To Base	Expected Output
+1010	2	10	10
+A	16	10	10
+255	10	16	FF
+77	8	2	111111
+Z	36	10	35
+
+CLI and GUI versions tested with these cases.
+
+6. Deployment
+
+CLI Version: Run in terminal (python convert.py).
+
+GUI Kivy: Run as python main.py.
+
+Mobile Deployment:
+
+Kivy + Buildozer → Android APK.
+
+Flutter → Android & iOS builds (flutter build apk / flutter build ios).
+
+7. Limitations
+
+Current version handles only integer numbers.
+
+Fractional conversions (e.g., 10.625 → 1010.101) are not yet supported.
+
+Error messages are simple and can be enhanced.
+
+8. Future Enhancements
+
+Add support for fractional numbers.
+
+Build a web version (using Django/Flask for backend or Flet/Streamlit for frontend).
+
+Add theme customization (dark/light mode).
+
+Add history/log of past conversions.
